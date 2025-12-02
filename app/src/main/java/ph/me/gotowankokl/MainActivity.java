@@ -1,5 +1,6 @@
 package ph.me.gotowankokl;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -35,7 +36,10 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                         view.setBackgroundColor(Color.BLUE);
-                        Toast.makeText(MainActivity.this, "Wybrano kategorie"+i, Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(MainActivity.this, RecipeListActivity.class);
+                        String kategoria = adapterView.getItemAtPosition(i).toString();
+                        intent.putExtra("KATEGORIA",kategoria);
+                        startActivity(intent);
                     }
                 }
         );
